@@ -16,13 +16,15 @@ export default function HomeBanner({ id }) {
               <span>Developer</span>
             </li>
           </ul>
-          <a
-            className="btn"
-            href="https://www.linkedin.com/in/anupamyadav01/"
-            target="_blank"
-          >
-            Hire Me
-          </a>
+          <div className=" w-full flex justify-center items-center">
+            <a
+              className="btn"
+              href="https://www.linkedin.com/in/anupamyadav01/"
+              target="_blank"
+            >
+              Hire Me
+            </a>
+          </div>
         </div>
       </div>
       <div className="mask"></div>

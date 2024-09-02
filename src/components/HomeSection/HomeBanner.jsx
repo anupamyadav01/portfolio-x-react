@@ -16,7 +16,7 @@ export default function HomeBanner({ id }) {
               <span>Developer</span>
             </li>
           </ul>
-          <div className=" w-full flex justify-center items-center">
+          <div className=" w-full flex justify-center items-center mt-10">
             <a
               className="btn"
               href="https://www.linkedin.com/in/anupamyadav01/"

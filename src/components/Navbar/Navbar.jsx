@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "./NavbarStyle.css";
 import { Link } from "react-scroll";
+
 import {
   FaGithub,
   FaInstagram,
@@ -8,6 +9,7 @@ import {
   FaBars,
   FaTimes,
 } from "react-icons/fa";
+// import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [click, setClick] = useState(false);
@@ -21,7 +23,7 @@ export default function Navbar() {
           to="home"
           spy={true}
           smooth={true}
-          duration={30}
+          duration={500}
         >
           <div className="logo-img">
             <span className="blink">&lt;</span>
@@ -37,10 +39,9 @@ export default function Navbar() {
           <Link
             className="navLink"
             activeClass="active"
-            to="project"
+            to="/projects"
             spy={true}
             smooth={true}
-            duration={30}
           >
             Projects
           </Link>
@@ -52,7 +53,7 @@ export default function Navbar() {
             to="about"
             spy={true}
             smooth={true}
-            duration={30}
+            duration={500}
           >
             About
           </Link>
@@ -64,7 +65,7 @@ export default function Navbar() {
             to="skills"
             spy={true}
             smooth={true}
-            duration={30}
+            duration={500}
           >
             Skills
           </Link>
@@ -76,7 +77,7 @@ export default function Navbar() {
             to="contact"
             spy={true}
             smooth={true}
-            duration={30}
+            duration={500}
           >
             Contact
           </Link>

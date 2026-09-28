@@ -1,43 +1,35 @@
-import "./index.css";
-import Footer from "./components/Footer/Footer";
-import Navbar from "./components/Navbar/Navbar";
-import HomeBanner from "./components/HomeSection/HomeBanner";
-import ProjectCard from "./components/MyProjects/ProjectCard";
-import AboutMe from "./components/AboutMe/AboutMe";
-import SkillCard from "./components/Skills/SkillCard";
-import ContactForm from "./components/ContactForm/ContactForm";
-import AnimatedCursor from "react-animated-cursor";
-import { resume, amazon, swiggy } from "./images/index";
+// src/App.jsx
+import { useEffect } from "react";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
+import AppRouter from "./router/AppRouter";
 
-function App() {
-  return (
-    <>
-      <AnimatedCursor
-        color="#fff"
-        innerSize={8}
-        outerSize={40}
-        innerScale={1}
-        outerScale={1.8}
-        outerAlpha={0}
-        outerStyle={{
-          background: "#ffffff",
-          mixBlendMode: "exclusion",
-        }}
-        innerStyle={{
-          backgroundColor: "#36ffe6",
-        }}
-      />
-      <div>
-        <Navbar />
-        <HomeBanner id="home" />
+export default function App() {
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: "vertical",
+      gestureOrientation: "vertical",
+      smoothWheel: true,
+      wheelMultiplier: 1.0,
+      touchMultiplier: 1.5,
+      infinite: false,
+    });
 
-        <AboutMe id="about" />
-        <SkillCard id="skills" />
-        <ContactForm id="contact" />
-        <Footer />
-      </div>
-    </>
-  );
+    let animationFrameId;
+    function raf(time) {
+      lenis.raf(time);
+      animationFrameId = requestAnimationFrame(raf);
+    }
+
+    animationFrameId = requestAnimationFrame(raf);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      lenis.destroy();
+    };
+  }, []);
+
+  return <AppRouter />;
 }
-
-export default App;

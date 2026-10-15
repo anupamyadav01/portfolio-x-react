@@ -1,7 +1,7 @@
 import About from "./Sections/About";
 import ContactMe from "./Sections/ContactMe";
+import FeaturedProjects from "./Sections/FeaturedProjects";
 import Hero from "./Sections/Hero";
-import ProjectsSection from "./Sections/ProjectsSection";
 import Skills from "./Sections/Skills";
 
 export default function Home() {
@@ -9,7 +9,7 @@ export default function Home() {
     <>
       <Hero />
       <About />
-      <ProjectsSection />
+      <FeaturedProjects />
       <Skills />
       <ContactMe />
     </>

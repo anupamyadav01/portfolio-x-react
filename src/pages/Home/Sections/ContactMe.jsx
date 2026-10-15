@@ -8,7 +8,6 @@ import {
   FaCopy,
   FaCheck,
   FaPaperPlane,
-  FaGithub,
   FaLinkedinIn,
 } from "react-icons/fa";
 
@@ -78,49 +77,58 @@ export default function ContactMe({ id = "contact" }) {
   return (
     <section
       id={id}
-      className="relative w-full py-20 px-6 sm:px-10 overflow-hidden bg-slate-50 dark:bg-[#030712] text-slate-900 dark:text-slate-900 dark:text-white transition-colors duration-300"
+      className="relative w-full py-24 px-6 sm:px-10 lg:px-14 overflow-hidden bg-[#030712] text-slate-100"
     >
-      {/* Background Ambient Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] rounded-full blur-[140px] pointer-events-none bg-gradient-to-tr from-cyan-400/15 via-sky-500/10 to-indigo-500/10 dark:from-cyan-400/10 dark:via-sky-500/5 dark:to-transparent" />
+      {/* 1. High-Contrast Visible Grid Pattern in Pure Dark Mode */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-50 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(231, 96, 46, 0.20) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(231, 96, 46, 0.20) 1px, transparent 1px)
+          `,
+          backgroundSize: "36px 36px",
+          maskImage:
+            "radial-gradient(ellipse 85% 70% at 50% 50%, black 50%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 85% 70% at 50% 50%, black 50%, transparent 100%)",
+        }}
+      />
 
-      <div className="relative z-10 max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch rounded-3xl p-6 sm:p-10 border border-slate-200 dark:border-sky-500/20 bg-white/70 dark:bg-slate-900/60 backdrop-blur-xl shadow-2xl">
+      {/* 2. Content Card Container */}
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch rounded-3xl p-6 sm:p-10 border border-white/10 bg-[#0b111e]/90 backdrop-blur-xl shadow-2xl">
           {/* Left Column: Contact Details & Status */}
           <div className="lg:col-span-5 flex flex-col justify-between gap-6">
             <div className="flex flex-col gap-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/25 text-emerald-600 dark:text-emerald-300 font-mono text-xs uppercase tracking-wider w-fit">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                <span>Let&apos;s Build Together</span>
-              </div>
-
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-white">
                 Let&apos;s Get in{" "}
-                <span className="bg-gradient-to-r from-cyan-500 via-sky-500 to-indigo-500 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-[#E7602E] via-[#ff7c47] to-[#ffa177] bg-clip-text text-transparent">
                   Touch.
                 </span>
               </h2>
 
-              <p className="text-sm text-slate-600 dark:text-slate-600 dark:text-slate-400 leading-relaxed max-w-md">
+              <p className="text-sm text-slate-400 leading-relaxed max-w-md">
                 Have an open role, an exciting product idea, or just want to
-                chat front-end engineering? My inbox is always open.
+                discuss scalable front-end systems? My inbox is always open.
               </p>
             </div>
 
             {/* Quick Contact Cards */}
             <div className="flex flex-col gap-3">
               {/* Email Card with Copy Trigger */}
-              <div className="flex items-center justify-between p-3.5 rounded-xl border border-slate-200 dark:border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-950/50 hover:border-cyan-500/40 transition-colors">
+              <div className="flex items-center justify-between p-3.5 rounded-xl border border-white/10 bg-slate-950/60 hover:border-[#E7602E]/50 transition-colors">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-cyan-500/10 text-cyan-600 dark:text-[#36ffe6]">
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#E7602E]/10 text-[#E7602E]">
                     <FaEnvelope />
                   </div>
                   <div>
-                    <span className="block font-mono text-[11px] uppercase tracking-wider text-slate-500">
+                    <span className="block font-mono text-[11px] uppercase tracking-wider text-slate-400">
                       Email Me
                     </span>
                     <a
                       href="mailto:anupamy571@gmail.com"
-                      className="text-xs sm:text-sm font-semibold hover:text-cyan-500 transition-colors"
+                      className="text-xs sm:text-sm font-semibold text-slate-200 hover:text-[#E7602E] transition-colors"
                     >
                       anupamy571@gmail.com
                     </a>
@@ -129,11 +137,12 @@ export default function ContactMe({ id = "contact" }) {
                 <button
                   type="button"
                   onClick={handleCopyEmail}
-                  className="p-2 text-slate-600 dark:text-slate-400 hover:text-cyan-500 dark:hover:text-[#36ffe6] transition-colors"
+                  className="p-2 text-slate-400 hover:text-[#E7602E] transition-colors"
+                  title="Copy email address"
                   aria-label="Copy Email"
                 >
                   {copied ? (
-                    <FaCheck className="text-emerald-400" />
+                    <FaCheck className="text-emerald-500" />
                   ) : (
                     <FaCopy />
                   )}
@@ -141,17 +150,17 @@ export default function ContactMe({ id = "contact" }) {
               </div>
 
               {/* Phone Card */}
-              <div className="flex items-center gap-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-950/50 hover:border-cyan-500/40 transition-colors">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-cyan-500/10 text-cyan-600 dark:text-[#36ffe6]">
+              <div className="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-slate-950/60 hover:border-[#E7602E]/50 transition-colors">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#E7602E]/10 text-[#E7602E]">
                   <FaPhoneAlt />
                 </div>
                 <div>
-                  <span className="block font-mono text-[11px] uppercase tracking-wider text-slate-500">
+                  <span className="block font-mono text-[11px] uppercase tracking-wider text-slate-400">
                     Phone
                   </span>
                   <a
                     href="tel:+919982709506"
-                    className="text-xs sm:text-sm font-semibold hover:text-cyan-500 transition-colors"
+                    className="text-xs sm:text-sm font-semibold text-slate-200 hover:text-[#E7602E] transition-colors"
                   >
                     +91-9982709506
                   </a>
@@ -159,15 +168,15 @@ export default function ContactMe({ id = "contact" }) {
               </div>
 
               {/* Location Card */}
-              <div className="flex items-center gap-3 p-3.5 rounded-xl border border-slate-200 dark:border-slate-200 dark:border-slate-800 bg-slate-100/70 dark:bg-slate-950/50">
-                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-cyan-500/10 text-cyan-600 dark:text-[#36ffe6]">
+              <div className="flex items-center gap-3 p-3.5 rounded-xl border border-white/10 bg-slate-950/60">
+                <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#E7602E]/10 text-[#E7602E]">
                   <FaMapMarkerAlt />
                 </div>
                 <div>
-                  <span className="block font-mono text-[11px] uppercase tracking-wider text-slate-500">
+                  <span className="block font-mono text-[11px] uppercase tracking-wider text-slate-400">
                     Location
                   </span>
-                  <span className="text-xs sm:text-sm font-semibold text-slate-700 dark:text-slate-300">
+                  <span className="text-xs sm:text-sm font-semibold text-slate-300">
                     Jaipur, Rajasthan, India
                   </span>
                 </div>
@@ -175,33 +184,24 @@ export default function ContactMe({ id = "contact" }) {
             </div>
 
             {/* Social Links Row */}
-            <div className="flex items-center gap-3 pt-3 border-t border-slate-200 dark:border-slate-200 dark:border-slate-800">
-              <span className="text-xs text-slate-500">Connect with me:</span>
+            <div className="flex items-center gap-3 pt-3 border-t border-white/10">
+              <span className="text-xs text-slate-400">Connect with me:</span>
               <div className="flex items-center gap-2">
                 <a
                   href="https://www.linkedin.com/in/anupamyadav01/"
                   target="_blank"
                   rel="noreferrer"
-                  className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:text-cyan-500 hover:border-cyan-500 transition-colors text-sm"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center border border-white/10 bg-slate-950/60 text-slate-300 hover:text-white hover:border-[#E7602E] hover:bg-[#E7602E]/15 transition-all text-sm"
                   aria-label="LinkedIn"
                 >
                   <FaLinkedinIn />
-                </a>
-                <a
-                  href="https://github.com/anupamyadav01"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="w-8 h-8 rounded-lg flex items-center justify-center border border-slate-200 dark:border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950/60 text-slate-700 dark:text-slate-300 hover:text-cyan-500 hover:border-cyan-500 transition-colors text-sm"
-                  aria-label="GitHub"
-                >
-                  <FaGithub />
                 </a>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Form Panel (Guaranteed not to overflow) */}
-          <div className="lg:col-span-7 flex flex-col justify-center rounded-2xl p-6 sm:p-7 border border-slate-200 dark:border-slate-200 dark:border-slate-800 bg-slate-100/50 dark:bg-slate-950/50 shadow-inner">
+          {/* Right Column: Form Panel */}
+          <div className="lg:col-span-7 flex flex-col justify-center rounded-2xl p-6 sm:p-7 border border-white/10 bg-slate-950/60">
             <form
               ref={formRef}
               onSubmit={handleSubmit}
@@ -210,7 +210,7 @@ export default function ContactMe({ id = "contact" }) {
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="user_name"
-                  className="text-xs font-semibold text-slate-600 dark:text-slate-600 dark:text-slate-400"
+                  className="text-xs font-semibold text-slate-300"
                 >
                   Your Name
                 </label>
@@ -222,14 +222,14 @@ export default function ContactMe({ id = "contact" }) {
                   value={formData.user_name}
                   onChange={handleChange}
                   placeholder="e.g. John Doe"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-200 dark:border-slate-800 bg-white dark:bg-[#030712] text-sm text-slate-900 dark:text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#040812] text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#E7602E] focus:ring-2 focus:ring-[#E7602E]/20 transition-all"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="user_email"
-                  className="text-xs font-semibold text-slate-600 dark:text-slate-600 dark:text-slate-400"
+                  className="text-xs font-semibold text-slate-300"
                 >
                   Email Address
                 </label>
@@ -241,14 +241,14 @@ export default function ContactMe({ id = "contact" }) {
                   value={formData.user_email}
                   onChange={handleChange}
                   placeholder="e.g. john@example.com"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-200 dark:border-slate-800 bg-white dark:bg-[#030712] text-sm text-slate-900 dark:text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#040812] text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#E7602E] focus:ring-2 focus:ring-[#E7602E]/20 transition-all"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="subject"
-                  className="text-xs font-semibold text-slate-600 dark:text-slate-600 dark:text-slate-400"
+                  className="text-xs font-semibold text-slate-300"
                 >
                   Subject
                 </label>
@@ -260,14 +260,14 @@ export default function ContactMe({ id = "contact" }) {
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="Project Inquiry / Job Opportunity"
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-200 dark:border-slate-800 bg-white dark:bg-[#030712] text-sm text-slate-900 dark:text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#040812] text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#E7602E] focus:ring-2 focus:ring-[#E7602E]/20 transition-all"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
                 <label
                   htmlFor="message"
-                  className="text-xs font-semibold text-slate-600 dark:text-slate-600 dark:text-slate-400"
+                  className="text-xs font-semibold text-slate-300"
                 >
                   Your Message
                 </label>
@@ -279,17 +279,17 @@ export default function ContactMe({ id = "contact" }) {
                   value={formData.message}
                   onChange={handleChange}
                   placeholder="Tell me a bit about what you're looking to build..."
-                  className="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 dark:border-slate-200 dark:border-slate-800 bg-white dark:bg-[#030712] text-sm text-slate-900 dark:text-slate-900 dark:text-white placeholder-slate-400 dark:placeholder-slate-600 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all resize-none"
+                  className="w-full px-3.5 py-2.5 rounded-xl border border-white/10 bg-[#040812] text-sm text-slate-100 placeholder-slate-500 focus:outline-none focus:border-[#E7602E] focus:ring-2 focus:ring-[#E7602E]/20 transition-all resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={loading}
-                className="mt-1 w-full py-3 px-6 rounded-xl font-bold text-sm bg-gradient-to-r from-cyan-400 to-sky-600 text-slate-950 shadow-lg shadow-cyan-500/20 hover:-translate-y-0.5 disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
+                className="mt-2 w-full sm:w-1/2 mx-auto py-3 px-6 rounded-xl font-bold text-sm bg-[#E7602E] hover:bg-[#ff723b] text-white shadow-lg shadow-[#E7602E]/30 hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-60 disabled:cursor-not-allowed transition-all flex items-center justify-center gap-2"
               >
                 {loading ? (
-                  <span className="w-5 h-5 rounded-full border-2 border-slate-950/30 border-t-slate-950 animate-spin" />
+                  <span className="w-5 h-5 rounded-full border-2 border-white/30 border-t-white animate-spin" />
                 ) : (
                   <>
                     <span>Send Message</span>
@@ -300,7 +300,7 @@ export default function ContactMe({ id = "contact" }) {
 
               {statusMessage.text && (
                 <p
-                  className={`text-center text-xs mt-2 ${
+                  className={`text-center text-xs mt-2 font-medium ${
                     statusMessage.isError ? "text-rose-500" : "text-emerald-400"
                   }`}
                 >

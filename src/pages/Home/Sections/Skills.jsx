@@ -73,11 +73,9 @@ const skillsData = [
   {
     name: "Next.js",
     category: "Frontend",
-    icon: (
-      <SiNextdotjs className="text-slate-900 dark:text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]" />
-    ),
+    icon: <SiNextdotjs className="text-white" />,
     level: "Modern SSR",
-    glow: "#ffffff",
+    glow: "#E7602E",
   },
   {
     name: "Redux Toolkit",
@@ -103,9 +101,9 @@ const skillsData = [
   {
     name: "Express.js",
     category: "Backend",
-    icon: <SiExpress className="text-[#61DAFB]" />,
+    icon: <SiExpress className="text-slate-200" />,
     level: "Middleware",
-    glow: "#61DAFB",
+    glow: "#E7602E",
   },
   {
     name: "MongoDB",
@@ -117,9 +115,9 @@ const skillsData = [
   {
     name: "WebSockets",
     category: "Backend",
-    icon: <SiSocketdotio className="text-[#36FFE6]" />,
+    icon: <SiSocketdotio className="text-[#E7602E]" />,
     level: "Real-time",
-    glow: "#36FFE6",
+    glow: "#E7602E",
   },
   {
     name: "Firebase",
@@ -178,38 +176,38 @@ function SkillTile({ skill }) {
 
   return (
     <Tilt
-      tiltMaxAngleX={10}
-      tiltMaxAngleY={10}
-      perspective={900}
-      scale={1.04}
-      transitionSpeed={600}
+      tiltMaxAngleX={8}
+      tiltMaxAngleY={8}
+      perspective={1000}
+      scale={1.03}
+      transitionSpeed={700}
       className="h-full"
     >
       <div
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="relative group h-full rounded-2xl p-6 flex flex-col items-center justify-between text-center gap-3 overflow-hidden border border-slate-200 dark:border-slate-800 bg-[#0d1527]/80 backdrop-blur-xl shadow-xl transition-all duration-300 hover:border-cyan-400/50 hover:shadow-[0_10px_30px_rgba(54,255,230,0.15)]"
+        className="relative group h-full rounded-2xl p-5 sm:p-6 flex flex-col items-center justify-between text-center gap-3 overflow-hidden border border-white/10 bg-[#0b111e]/85 backdrop-blur-xl shadow-xl hover:shadow-[0_15px_35px_-10px_rgba(231,96,46,0.3)] transition-all duration-300 hover:border-[#E7602E]/60"
       >
-        {/* Dynamic Glow using the skill's brand color */}
+        {/* Dynamic Glow using skill brand color */}
         <div
           className="pointer-events-none absolute -inset-px transition-opacity duration-300 rounded-2xl"
           style={{
             opacity: coords.opacity,
-            background: `radial-gradient(180px circle at ${coords.x}px ${coords.y}px, ${skill.glow}33, transparent 80%)`,
+            background: `radial-gradient(170px circle at ${coords.x}px ${coords.y}px, ${skill.glow}30, transparent 80%)`,
           }}
         />
 
-        {/* Icon with Brand Glow */}
-        <div className="relative z-10 text-5xl h-14 flex items-center justify-center transition-transform duration-300 group-hover:scale-115">
+        {/* Floating Animated Icon */}
+        <div className="relative z-10 text-5xl h-14 flex items-center justify-center transition-all duration-300 group-hover:scale-110 group-hover:-translate-y-1">
           {skill.icon}
         </div>
 
         {/* Labels */}
-        <div className="relative z-10 flex flex-col items-center gap-1.5">
-          <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white tracking-wide">
+        <div className="relative z-10 flex flex-col items-center gap-1.5 w-full">
+          <h3 className="text-sm font-bold text-slate-100 tracking-wide group-hover:text-[#E7602E] transition-colors">
             {skill.name}
           </h3>
-          <span className="font-mono text-[11px] px-2.5 py-0.5 rounded-md border border-cyan-500/20 bg-cyan-950/40 text-cyan-300">
+          <span className="font-mono text-[10px] px-2.5 py-0.5 rounded-md border border-[#E7602E]/30 bg-[#E7602E]/10 text-[#ffa177] font-medium">
             {skill.level}
           </span>
         </div>
@@ -239,41 +237,55 @@ export default function Skills({ id = "skills" }) {
   return (
     <section
       id={id}
-      className="relative w-full py-24 px-6 sm:px-10 overflow-hidden bg-[#030712] text-slate-900 dark:text-white"
+      className="relative w-full py-24 px-6 sm:px-10 lg:px-14 overflow-hidden bg-[#030712] text-slate-100"
     >
-      {/* Colorful Background Orbs */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full blur-[160px] pointer-events-none bg-gradient-to-tr from-cyan-500/15 via-sky-500/10 to-indigo-500/10" />
+      {/* 1. High-Contrast Visible Grid Pattern in Pure Dark Mode */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-50 z-0"
+        style={{
+          backgroundImage: `
+            linear-gradient(to right, rgba(231, 96, 46, 0.20) 1px, transparent 1px),
+            linear-gradient(to bottom, rgba(231, 96, 46, 0.20) 1px, transparent 1px)
+          `,
+          backgroundSize: "36px 36px",
+          maskImage:
+            "radial-gradient(ellipse 85% 70% at 50% 50%, black 50%, transparent 100%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse 85% 70% at 50% 50%, black 50%, transparent 100%)",
+        }}
+      />
 
-      <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center gap-10">
+      {/* 2. Section Content Container */}
+      <div className="relative z-10 max-w-7xl mx-auto flex flex-col items-center gap-12">
         {/* Header */}
         <div className="text-center flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/30 text-[#36ffe6] font-mono text-xs uppercase tracking-wider">
-            <FaLaptopCode className="text-sm text-cyan-400" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#E7602E]/10 border border-[#E7602E]/30 text-[#E7602E] font-mono text-xs uppercase tracking-wider">
+            <FaLaptopCode className="text-sm text-[#E7602E]" />
             <span>Technical Capabilities</span>
           </div>
-          <h2 className="mt-3 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight">
+          <h2 className="mt-4 text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-tight text-white">
             Skills &amp;{" "}
-            <span className="bg-gradient-to-r from-[#36ffe6] via-[#38bdf8] to-[#818cf8] bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#E7602E] via-[#ff7c47] to-[#ffa177] bg-clip-text text-transparent">
               Technologies
             </span>
           </h2>
-          <p className="mt-3 max-w-2xl text-slate-600 dark:text-slate-400 text-sm sm:text-base leading-relaxed">
+          <p className="mt-3 max-w-2xl text-slate-400 text-sm sm:text-base leading-relaxed">
             A battle-tested set of languages, frameworks, and architecture tools
-            I use to build scalable web applications.
+            I use to build performant, scalable web systems.
           </p>
         </div>
 
         {/* Filter Tabs */}
-        <div className="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-[#0b111e]/90 backdrop-blur-xl shadow-lg">
+        <div className="inline-flex flex-wrap items-center justify-center gap-1.5 p-1.5 rounded-2xl border border-white/10 bg-[#0b111e]/90 backdrop-blur-xl shadow-xl">
           {categories.map((cat) => (
             <button
               key={cat}
               type="button"
               onClick={() => setActiveCategory(cat)}
-              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-200 ${
+              className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all duration-300 ${
                 activeCategory === cat
-                  ? "bg-[#36ffe6] text-[#04121d] shadow-[0_2px_14px_rgba(54,255,230,0.35)]"
-                  : "text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:text-white"
+                  ? "bg-[#E7602E] text-white shadow-lg shadow-[#E7602E]/30 scale-[1.02]"
+                  : "text-slate-400 hover:text-white"
               }`}
             >
               {cat}
@@ -288,25 +300,25 @@ export default function Skills({ id = "skills" }) {
           ))}
         </div>
 
-        {/* CS Knowledge Row with Brand Colors */}
-        <div className="w-full mt-4 p-5 sm:p-6 rounded-2xl border border-slate-200 dark:border-slate-800 bg-[#0b111e]/80 backdrop-blur-xl flex flex-wrap items-center justify-between gap-4 shadow-xl">
-          <div className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-wider text-[#36ffe6]">
-            <FaServer className="text-cyan-400" />
+        {/* CS Knowledge Row */}
+        <div className="w-full p-5 sm:p-6 rounded-2xl border border-white/10 bg-[#0b111e]/85 backdrop-blur-xl flex flex-wrap items-center justify-between gap-4 shadow-xl hover:border-[#E7602E]/30 transition-colors">
+          <div className="inline-flex items-center gap-2 font-mono text-xs sm:text-sm uppercase tracking-wider text-[#E7602E] font-semibold">
+            <FaServer className="text-[#E7602E] shrink-0" />
             <span>Core CS Foundations:</span>
           </div>
 
           <div className="flex flex-wrap items-center gap-2.5">
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-[#030712] text-xs font-medium text-slate-300 hover:border-cyan-500/40 transition-colors">
-              <FaLaptopCode className="text-cyan-400" /> OOPs
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-slate-950/60 text-xs font-medium text-slate-300 hover:border-[#E7602E]/60 hover:-translate-y-0.5 transition-all">
+              <FaLaptopCode className="text-[#E7602E]" /> OOPs
             </span>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-[#030712] text-xs font-medium text-slate-300 hover:border-emerald-500/40 transition-colors">
-              <FaDatabase className="text-emerald-400" /> DBMS &amp; SQL
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-slate-950/60 text-xs font-medium text-slate-300 hover:border-[#E7602E]/60 hover:-translate-y-0.5 transition-all">
+              <FaDatabase className="text-[#E7602E]" /> DBMS &amp; SQL
             </span>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-[#030712] text-xs font-medium text-slate-300 hover:border-amber-500/40 transition-colors">
-              <FaServer className="text-amber-400" /> Operating Systems
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-slate-950/60 text-xs font-medium text-slate-300 hover:border-[#E7602E]/60 hover:-translate-y-0.5 transition-all">
+              <FaServer className="text-[#E7602E]" /> Operating Systems
             </span>
-            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-[#030712] text-xs font-medium text-slate-300 hover:border-indigo-500/40 transition-colors">
-              <FaNetworkWired className="text-indigo-400" /> Computer Networks
+            <span className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-white/10 bg-slate-950/60 text-xs font-medium text-slate-300 hover:border-[#E7602E]/60 hover:-translate-y-0.5 transition-all">
+              <FaNetworkWired className="text-[#E7602E]" /> Computer Networks
             </span>
           </div>
         </div>

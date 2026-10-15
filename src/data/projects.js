@@ -1,26 +1,50 @@
 // src/data/projects.js
-import { amazon, swiggy, resume } from "../images/index";
+import {
+  amazon,
+  swiggy,
+  resume,
+  medium,
+  threads,
+} from "../../public/images/index";
 
 export const allProjects = [
   {
-    id: "amazon-clone",
-    number: "01",
-    title: "Amazon E-Commerce Architecture",
-    tagline:
-      "High-performance full shopping experience with localized basket state",
-    desc: "A production-grade e-commerce application featuring global cart synchronization, simulated stripe checkout workflow, debounced search suggestions, and comprehensive responsive layouts.",
-    img: amazon,
-    github: "https://github.com/anupamyadav01",
+    id: "currents-blog",
+    number: "04",
+    title: "Currents (Medium Clone)",
+    tagline: "Full-stack publishing platform with rich text formatting",
+    desc: "A modern blogging platform inspired by Medium, featuring secure user authentication, a rich text editor for drafting articles, and a seamless reading experience.",
+    img: medium, // Updated to match medium.png
+    github: "https://github.com/anupamyadav01/Currents",
     live: "https://poftfolio-anupam-yadav.vercel.app/",
-    tags: ["React", "Redux Toolkit", "Tailwind CSS", "REST API"],
-    category: "React",
-    metrics: { speed: "98/100", state: "Redux Store", tests: "Passed" },
+    tags: ["React", "Node.js", "Express", "MongoDB", "Tailwind CSS"],
+    category: "Full Stack",
+    metrics: { speed: "92/100", state: "Redux", tests: "Passed" },
     highlights: [
-      "Cart persistence via localStorage",
-      "Optimized dynamic re-renders",
-      "Clean modular breakdown",
+      "Secure user authentication",
+      "Rich text content creation",
+      "Responsive reading layouts",
     ],
-    featured: true, // Shown on homepage
+    featured: true,
+  },
+  {
+    id: "threads-clone",
+    number: "05",
+    title: "Threads Social Clone",
+    tagline: "Real-time microblogging and dynamic social engagement platform",
+    desc: "A social media replica focusing on nested comment threads, instantaneous UI updates for likes and reposts, and infinite scroll feeds.",
+    img: threads, // Updated to match threads.png
+    github: "https://github.com/anupamyadav01/Threads-Clone",
+    live: "https://poftfolio-anupam-yadav.vercel.app/",
+    tags: ["React", "Next.js", "Tailwind CSS", "Appwrite/Firebase"],
+    category: "Full Stack",
+    metrics: { speed: "94/100", state: "Context", tests: "Passed" },
+    highlights: [
+      "Nested conversational threads",
+      "Real-time engagement metrics",
+      "Optimized media rendering",
+    ],
+    featured: true,
   },
   {
     id: "swiggy-clone",
@@ -39,7 +63,27 @@ export const allProjects = [
       "Custom hooks for fetch caching",
       "Fluid mobile layout",
     ],
-    featured: true, // Shown on homepage
+    featured: true,
+  },
+  {
+    id: "amazon-clone",
+    number: "01",
+    title: "Amazon E-Commerce Architecture",
+    tagline:
+      "High-performance full shopping experience with localized basket state",
+    desc: "A production-grade e-commerce application featuring global cart synchronization, simulated stripe checkout workflow, debounced search suggestions, and comprehensive responsive layouts.",
+    img: amazon,
+    github: "https://github.com/anupamyadav01",
+    live: "https://poftfolio-anupam-yadav.vercel.app/",
+    tags: ["React", "Redux Toolkit", "Tailwind CSS", "REST API"],
+    category: "React",
+    metrics: { speed: "98/100", state: "Redux Store", tests: "Passed" },
+    highlights: [
+      "Cart persistence via localStorage",
+      "Optimized dynamic re-renders",
+      "Clean modular breakdown",
+    ],
+    featured: true,
   },
   {
     id: "resume-builder",
@@ -48,7 +92,7 @@ export const allProjects = [
     tagline: "Live document synthesizer with instantaneous PDF generation",
     desc: "A clean client-side utility helping job seekers configure custom sections, preview typography live, and generate ATS-compliant vector PDF documents with zero server overhead.",
     img: resume,
-    github: "https://github.com/anupamyadav01",
+    github: "https://github.com/anupamyadav01/resume-builder",
     live: "https://poftfolio-anupam-yadav.vercel.app/",
     tags: ["JavaScript", "Tailwind CSS", "React", "PDF Kit"],
     category: "Tools",
@@ -60,84 +104,24 @@ export const allProjects = [
     ],
     featured: false,
   },
+
   {
-    id: "color-catcher-game",
-    number: "04",
-    title: "Color Catcher Speed Reflex",
-    tagline:
-      "Interactive arcade browser engine focusing on high-speed DOM cycles",
-    desc: "An arcade reaction game designed to stress-test DOM redraws, featuring dynamic color shuffling algorithms, dynamic score counters, and precise event interval listeners.",
-    img: amazon,
-    github: "https://github.com/anupamyadav01",
+    id: "tiny-url",
+    number: "06",
+    title: "TinyURL Shortener",
+    tagline: "Scalable URL redirection and link analytics service",
+    desc: "A fast and efficient URL shortening service that generates compact links, handles instantaneous redirection, and tracks click analytics for users.",
+    img: null, // No tinyurl.png found in your images folder, set to null for now
+    github: "https://github.com/anupamyadav01/TinyURL",
     live: "https://poftfolio-anupam-yadav.vercel.app/",
-    tags: ["JavaScript", "DOM API", "CSS Animations"],
-    category: "Games",
-    metrics: { speed: "60 FPS", state: "Engine Loop", tests: "Passed" },
+    tags: ["React", "Node.js", "Express", "MongoDB"],
+    category: "Tools",
+    metrics: { speed: "99/100", state: "Local", tests: "Passed" },
     highlights: [
-      "Custom event ticker",
-      "Zero layout shift",
-      "Keyframe-driven particle bursts",
+      "Unique hash generation",
+      "Sub-second redirects",
+      "Click tracking analytics",
     ],
-    featured: true, // Shown on homepage
-  },
-  {
-    id: "color-catcher-game",
-    number: "04",
-    title: "Color Catcher Speed Reflex",
-    tagline:
-      "Interactive arcade browser engine focusing on high-speed DOM cycles",
-    desc: "An arcade reaction game designed to stress-test DOM redraws, featuring dynamic color shuffling algorithms, dynamic score counters, and precise event interval listeners.",
-    img: amazon,
-    github: "https://github.com/anupamyadav01",
-    live: "https://poftfolio-anupam-yadav.vercel.app/",
-    tags: ["JavaScript", "DOM API", "CSS Animations"],
-    category: "Games",
-    metrics: { speed: "60 FPS", state: "Engine Loop", tests: "Passed" },
-    highlights: [
-      "Custom event ticker",
-      "Zero layout shift",
-      "Keyframe-driven particle bursts",
-    ],
-    featured: true, // Shown on homepage
-  },
-  {
-    id: "color-catcher-game",
-    number: "04",
-    title: "Color Catcher Speed Reflex",
-    tagline:
-      "Interactive arcade browser engine focusing on high-speed DOM cycles",
-    desc: "An arcade reaction game designed to stress-test DOM redraws, featuring dynamic color shuffling algorithms, dynamic score counters, and precise event interval listeners.",
-    img: amazon,
-    github: "https://github.com/anupamyadav01",
-    live: "https://poftfolio-anupam-yadav.vercel.app/",
-    tags: ["JavaScript", "DOM API", "CSS Animations"],
-    category: "Games",
-    metrics: { speed: "60 FPS", state: "Engine Loop", tests: "Passed" },
-    highlights: [
-      "Custom event ticker",
-      "Zero layout shift",
-      "Keyframe-driven particle bursts",
-    ],
-    featured: true, // Shown on homepage
-  },
-  {
-    id: "color-catcher-game",
-    number: "04",
-    title: "Color Catcher Speed Reflex",
-    tagline:
-      "Interactive arcade browser engine focusing on high-speed DOM cycles",
-    desc: "An arcade reaction game designed to stress-test DOM redraws, featuring dynamic color shuffling algorithms, dynamic score counters, and precise event interval listeners.",
-    img: amazon,
-    github: "https://github.com/anupamyadav01",
-    live: "https://poftfolio-anupam-yadav.vercel.app/",
-    tags: ["JavaScript", "DOM API", "CSS Animations"],
-    category: "Games",
-    metrics: { speed: "60 FPS", state: "Engine Loop", tests: "Passed" },
-    highlights: [
-      "Custom event ticker",
-      "Zero layout shift",
-      "Keyframe-driven particle bursts",
-    ],
-    featured: true, // Shown on homepage
+    featured: false,
   },
 ];

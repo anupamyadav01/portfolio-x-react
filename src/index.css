@@ -1,15 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
 @import url("https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&display=swap");
-
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* ================================
+/* =========================================================
    Global Reset
-================================ */
-
+   NOTE: Never add 'scroll-behavior: smooth' here because
+   it clashes with Lenis and causes stuttering!
+========================================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,19 +17,16 @@
   font-family: "Poppins", sans-serif;
   font-weight: 500;
   text-decoration: none;
-  scroll-behavior: smooth;
 }
 
-/* ================================
-   HTML / Body
-================================ */
-
-html {
-  scroll-behavior: smooth;
+/* Let Lenis handle the page height automatically */
+html,
+body {
+  min-height: 100vh;
+  overscroll-behavior: none; /* Stops the elastic rubber-band bounce on Mac/iOS */
 }
 
 body {
-  min-height: 100vh;
   background: #f8fafc;
   color: #0f172a;
   transition:
@@ -37,47 +34,35 @@ body {
     color 300ms ease;
 }
 
-/* Dark mode */
+/* Dark mode theme */
 html.dark body {
   background: #060a12;
   color: #f1f5f9;
 }
 
-/* ================================
-   Lists
-================================ */
-
 ul {
   list-style: none;
 }
 
-/* ================================
-   Custom Button
-================================ */
-
+/* =========================================================
+   Custom Buttons
+========================================================= */
 .btn {
   display: flex;
   justify-content: center;
   align-items: center;
-
   width: fit-content;
   padding: 15px 24px;
-
   border: 2px solid #36ffe6;
   border-radius: 10px;
-
   position: relative;
   bottom: 0;
-
   background-color: transparent;
-
   color: #0f172a;
   font-size: 20px;
-
   transition: all 0.35s ease-out;
 }
 
-/* Dark mode button text */
 html.dark .btn {
   color: #fff;
 }
@@ -92,46 +77,13 @@ html.dark .btn {
   background-color: #18b6a3e2;
 }
 
-/* ================================
-   Mobile Button
-================================ */
-
 @media screen and (max-width: 750px) {
   .btn {
     font-size: 16px;
   }
 }
 
-/* ================================
-   Scrollbar
-================================ */
-
+/* Hide scrollbar cleanly */
 ::-webkit-scrollbar {
   display: none;
-}
-
-/* ================================
-   Lenis Smooth Scroll
-================================ */
-
-/* Enable Lenis root compatibility */
-html.lenis,
-html.lenis body {
-  height: auto;
-}
-
-.lenis.lenis-smooth {
-  scroll-behavior: auto !important;
-}
-
-.lenis.lenis-smooth [data-lenis-prevent] {
-  overscroll-behavior: contain;
-}
-
-.lenis.lenis-stopped {
-  overflow: hidden;
-}
-
-.lenis.lenis-scrolling iframe {
-  pointer-events: none;
 }
